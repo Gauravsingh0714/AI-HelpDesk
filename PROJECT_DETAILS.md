@@ -1,7 +1,7 @@
 # AI Helpdesk - GITA Autonomous College
 
 ## Overview
-The **AI Helpdesk** is a web-based chatbot application designed to provide instant assistance to students, faculty, and visitors regarding GITA Autonomous College, Bhubaneswar. The assistant leverages OpenAI's GPT models to answer queries related to courses, admissions, fees, exams, hostel facilities, and contact information.
+The **AI Helpdesk** is a web-based chatbot application designed to provide instant assistance to students, faculty, and visitors regarding GITA Autonomous College, Bhubaneswar. The assistant leverages Groq's lightning-fast inference models to answer queries related to courses, admissions, fees, exams, hostel facilities, and contact information.
 
 ## Tech Stack
 ### Frontend
@@ -13,7 +13,7 @@ The **AI Helpdesk** is a web-based chatbot application designed to provide insta
 
 ### Backend
 - **Environment**: Node.js & Express.js
-- **AI Integration**: OpenAI SDK (`gpt-3.5-turbo`)
+- **AI Integration**: Groq SDK (`llama3-8b-8192`)
 - **Middleware**: CORS, Express JSON parser
 - **Security**: Environment variables via `dotenv` for API key protection.
 
@@ -26,9 +26,9 @@ The **AI Helpdesk** is a web-based chatbot application designed to provide insta
 ```
 AI HelpDesk/
 ├── backend/
-│   ├── .env               # Environment variables (OPENAI_API_KEY)
+│   ├── .env               # Environment variables (GROQ_API_KEY)
 │   ├── package.json       # Backend dependencies
-│   └── server.js          # Main Express server and OpenAI integration
+│   └── server.js          # Main Express server and Groq integration
 └── frontend/
     ├── package.json       # Frontend dependencies
     ├── postcss.config.js  # PostCSS Config
@@ -53,9 +53,9 @@ AI HelpDesk/
    ```bash
    npm install
    ```
-3. Create a `.env` file in the `backend` directory and add your OpenAI API key:
+3. Create a `.env` file in the `backend` directory and add your Groq API key:
    ```env
-   OPENAI_API_KEY=your_api_key_here
+   GROQ_API_KEY=your_api_key_here
    ```
 4. Start the server (runs on `http://localhost:5000`):
    ```bash
@@ -77,5 +77,5 @@ AI HelpDesk/
    ```
 
 ## Development and Extensibility
-- **AI Upgrades:** Change the model parameter in `backend/server.js` from `gpt-3.5-turbo` to `gpt-4` for more advanced reasoning.
+- **AI Upgrades:** Change the model parameter in `backend/server.js` from `llama3-8b-8192` to `mixtral-8x7b-32768` for different reasoning.
 - **Knowledge Base Expansion:** Update `SYSTEM_PROMPT` in `backend/server.js` to feed the AI new or updated information regarding the college.

@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const { OpenAI } = require('openai');
+const Groq = require('groq-sdk');
 
 dotenv.config();
 
@@ -11,9 +11,9 @@ app.use(express.json());
 
 const PORT = 5000;
 
-// Initialize OpenAI SDK
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+// Initialize Groq SDK
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY,
 });
 
 const SYSTEM_PROMPT = `You are an AI-powered helpdesk assistant for GITA Autonomous College, Bhubaneswar.
@@ -101,8 +101,8 @@ app.post('/chat', async (req, res) => {
       { role: 'user', content: userMessage }
     ];
 
-    const response = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo', // You can change this to gpt-4 if needed
+    const response = await groq.chat.completions.create({
+      model: 'llama3-8b-8192', // You can change this to other Groq models like mixtral-8x7b-32768
       messages: messages,
       temperature: 0.7,
       max_tokens: 256,
